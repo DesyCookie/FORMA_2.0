@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><AbaConnectContainer>
+  <TaskCount>1</TaskCount>
+  <Task>
+    <Transaction id="1">
+      <Document mode="SAVE">
+        <AccountPayableDocumentDate>2021-02-17</AccountPayableDocumentDate>
+        <CustomDocumentDeadLine>30</CustomDocumentDeadLine>
+        <DocumentBlockedForDisposition>false</DocumentBlockedForDisposition>
+        <DocumentCode>F</DocumentCode>
+        <DocumentPicture>institute_0006_v2017 (2) (1) (1) (1).pdf</DocumentPicture>
+        <DocumentStatusForDisposition>0</DocumentStatusForDisposition>
+        <KeyAmount>000.01</KeyAmount>
+        <LineItem mode="SAVE">
+          <Project>7078-M</Project>
+          <TaxCode>111</TaxCode>
+          <Text>Buchungstext</Text>
+          <_USERFIELD1>Hilfstext</_USERFIELD1>
+        </LineItem>
+        <Note/>
+        <Number>006</Number>
+        <PaymentTermNumber>1</PaymentTermNumber>
+        <ReferenceNumber>0</ReferenceNumber>
+        <StatusIdentification>PROV1</StatusIdentification>
+      </Document>
+    </Transaction>
+  </Task>
+</AbaConnectContainer>
