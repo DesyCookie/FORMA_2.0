@@ -47,8 +47,10 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<VBox prefHeight="999.0" prefWidth="1723.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.forma_new.FormaController">
+<VBox prefHeight="999.0" prefWidth="1723.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.forma_new.FormaController">
   <children>
     <MenuBar VBox.vgrow="NEVER">
       <menus>
@@ -91,14 +93,14 @@
                                           <Blend />
                                        </effect>
                                     </Button>
-                                    <TextField disable="true" editable="false" layoutX="163.0" layoutY="157.0" />
-                                    <TextField layoutX="163.0" layoutY="216.0" promptText="01.01.2022" />
-                                    <TextField layoutX="163.0" layoutY="271.0" />
-                                    <TextField layoutX="163.0" layoutY="334.0" prefHeight="25.0" prefWidth="436.0" />
-                                    <ComboBox layoutX="442.0" layoutY="156.0" prefWidth="150.0" promptText="Projekt auswählen" />
-                                    <TextField layoutX="443.0" layoutY="215.0" promptText="E/M" />
-                                    <TextField layoutX="163.0" layoutY="402.0" />
-                                    <ComboBox layoutX="443.0" layoutY="270.0" prefWidth="150.0" promptText="F/G" />
+                                    <TextField fx:id="belegNummer" disable="true" editable="false" layoutX="163.0" layoutY="157.0" />
+                                    <TextField fx:id="belegDatum" layoutX="163.0" layoutY="216.0" promptText="01.01.2022" />
+                                    <TextField fx:id="belegReferenz" layoutX="163.0" layoutY="271.0" />
+                                    <TextField fx:id="buchungsText" layoutX="163.0" layoutY="334.0" prefHeight="25.0" prefWidth="436.0" />
+                                    <ComboBox fx:id="projNummer" layoutX="442.0" layoutY="156.0" prefWidth="150.0" promptText="Projekt auswählen" />
+                                    <TextField fx:id="bauadInfo" layoutX="443.0" layoutY="215.0" promptText="E/M" />
+                                    <TextField fx:id="betrag" layoutX="163.0" layoutY="402.0" />
+                                    <ComboBox fx:id="belegArt" layoutX="443.0" layoutY="270.0" prefWidth="150.0" promptText="F/G" visibleRowCount="2" />
                                     <Label layoutX="45.0" layoutY="160.0" text="Beleg-Nr." />
                                     <Label layoutX="46.0" layoutY="219.0" text="Beleg-Datum" />
                                     <Label layoutX="45.0" layoutY="274.0" text="Belegreferenz" />
@@ -107,7 +109,7 @@
                                     <Label layoutX="369.0" layoutY="161.0" text="Projekt-Nr." />
                                     <Label layoutX="369.0" layoutY="217.0" text="BAUAD-Info" />
                                     <Label layoutX="369.0" layoutY="275.0" text="Belegart" />
-                                    <Button layoutX="46.0" layoutY="488.0" mnemonicParsing="false" text="XML Erstellen" />
+                                    <Button fx:id="createXML" layoutX="46.0" layoutY="488.0" mnemonicParsing="false" onAction="#createXML" onMouseClicked="#createXML" text="XML Erstellen" />
                                     <ImageView fitHeight="131.0" fitWidth="110.0" layoutX="680.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
                                           <Image url="@Forma-Tool.png" />
@@ -128,7 +130,14 @@
                   </AnchorPane>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="667.0" prefWidth="370.0" SplitPane.resizableWithParent="false">
                      <children>
-                        <Pane fx:id="pdfViewer" prefHeight="972.0" prefWidth="909.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                        <Pane fx:id="pdfViewer" prefHeight="972.0" prefWidth="909.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <Text fill="#9a9a9a" layoutX="126.0" layoutY="458.0" opacity="0.13" rotate="-24.1" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="2.0" text="PDF Viewer coming soon">
+                                 <font>
+                                    <Font size="64.0" />
+                                 </font>
+                              </Text>
+                           </children></Pane>
                      </children></AnchorPane>
               </items>
             </SplitPane>
