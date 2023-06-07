@@ -1,37 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!--
-  Copyright (c) 2015, 2019, Gluon and/or its affiliates.
-  All rights reserved. Use is subject to license terms.
-
-  This file is available and licensed under the following license:
-
-  Redistribution and use in source and binary forms, with or without
-  modification, are permitted provided that the following conditions
-  are met:
-
-  - Redistributions of source code must retain the above copyright
-    notice, this list of conditions and the following disclaimer.
-  - Redistributions in binary form must reproduce the above copyright
-    notice, this list of conditions and the following disclaimer in
-    the documentation and/or other materials provided with the distribution.
-  - Neither the name of Oracle Corporation nor the names of its
-    contributors may be used to endorse or promote products derived
-    from this software without specific prior written permission.
-
-  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
-  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
-  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
-  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
-  OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
-  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
-  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
-  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
-  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
-  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
-  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
--->
-
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
@@ -45,15 +13,22 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
-<VBox prefHeight="999.0" prefWidth="1723.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.forma_new.FormaController">
+<VBox fx:id="mainBox" prefHeight="694.0" prefWidth="596.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.forma_new.FormaController">
   <children>
     <MenuBar VBox.vgrow="NEVER">
       <menus>
+        <Menu mnemonicParsing="false" text="Start">
+          <items>
+            <MenuItem fx:id="closeButton" mnemonicParsing="false" text="Beenden" />
+          </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Info">
+          <items>
+            <MenuItem mnemonicParsing="false" text="Impressum" />
+          </items>
+        </Menu>
             <Menu mnemonicParsing="false">
                <graphic>
                   <ImageView fitHeight="20.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
@@ -63,21 +38,11 @@
                   </ImageView>
                </graphic>
             </Menu>
-        <Menu mnemonicParsing="false" text="Start">
-          <items>
-            <MenuItem mnemonicParsing="false" text="Beenden" />
-          </items>
-        </Menu>
-        <Menu mnemonicParsing="false" text="Info">
-          <items>
-            <MenuItem mnemonicParsing="false" text="Impressum" />
-          </items>
-        </Menu>
       </menus>
     </MenuBar>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="588.0" prefWidth="856.0" VBox.vgrow="ALWAYS">
       <children>
-            <SplitPane dividerPositions="0.47007553747821035" layoutX="408.0" layoutY="283.0" prefHeight="669.0" prefWidth="969.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <SplitPane dividerPositions="0.9946164199192462" layoutX="408.0" layoutY="283.0" prefHeight="970.0" prefWidth="614.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
               <items>
                 <AnchorPane SplitPane.resizableWithParent="false">
                      <children>
@@ -85,7 +50,7 @@
                           <items>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="827.0" SplitPane.resizableWithParent="false">
                                  <children>
-                                    <Button fx:id="pdfButton" layoutX="46.0" layoutY="95.0" mnemonicParsing="false" onAction="#openPDF" prefHeight="25.0" prefWidth="88.0" style="-fx-background-color: #810f47;" text="PDF öffnen" textFill="WHITE">
+                                    <Button fx:id="pdfButton" layoutX="46.0" layoutY="95.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="88.0" style="-fx-background-color: #810f47;" text="PDF öffnen" textFill="WHITE" visible="false">
                                        <cursor>
                                           <Cursor fx:constant="HAND" />
                                        </cursor>
@@ -96,31 +61,32 @@
                                     <TextField fx:id="belegNummer" disable="true" editable="false" layoutX="163.0" layoutY="157.0" />
                                     <TextField fx:id="belegDatum" layoutX="163.0" layoutY="216.0" promptText="01.01.2022" />
                                     <TextField fx:id="belegReferenz" layoutX="163.0" layoutY="271.0" />
-                                    <TextField fx:id="buchungsText" layoutX="163.0" layoutY="334.0" prefHeight="25.0" prefWidth="436.0" />
-                                    <ComboBox fx:id="projNummer" layoutX="442.0" layoutY="156.0" prefWidth="150.0" promptText="Projekt auswählen" />
-                                    <TextField fx:id="bauadInfo" layoutX="443.0" layoutY="215.0" promptText="E/M" />
+                                    <TextField fx:id="buchungsText" layoutX="163.0" layoutY="334.0" prefHeight="26.0" prefWidth="410.0" />
+                                    <TextField fx:id="bauadInfo" layoutX="422.0" layoutY="217.0" promptText="E/M" />
                                     <TextField fx:id="betrag" layoutX="163.0" layoutY="402.0" />
-                                    <ComboBox fx:id="belegArt" layoutX="443.0" layoutY="270.0" prefWidth="150.0" promptText="F/G" visibleRowCount="2" />
+                                    <ComboBox fx:id="belegArt" layoutX="422.0" layoutY="272.0" prefWidth="150.0" promptText="F/G" visibleRowCount="2" />
                                     <Label layoutX="45.0" layoutY="160.0" text="Beleg-Nr." />
                                     <Label layoutX="46.0" layoutY="219.0" text="Beleg-Datum" />
                                     <Label layoutX="45.0" layoutY="274.0" text="Belegreferenz" />
                                     <Label layoutX="46.0" layoutY="338.0" text="Buchungstext" />
                                     <Label layoutX="45.0" layoutY="406.0" text="Betrag" />
-                                    <Label layoutX="369.0" layoutY="161.0" text="Projekt-Nr." />
-                                    <Label layoutX="369.0" layoutY="217.0" text="BAUAD-Info" />
-                                    <Label layoutX="369.0" layoutY="275.0" text="Belegart" />
-                                    <Button fx:id="createXML" layoutX="46.0" layoutY="488.0" mnemonicParsing="false" onAction="#createXML" onMouseClicked="#createXML" text="XML Erstellen" />
-                                    <ImageView fitHeight="131.0" fitWidth="110.0" layoutX="680.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+                                    <Label layoutX="348.0" layoutY="163.0" text="Projekt-Nr." />
+                                    <Label layoutX="348.0" layoutY="219.0" text="BAUAD-Info" />
+                                    <Label layoutX="348.0" layoutY="277.0" text="Belegart" />
+                                    <Button fx:id="createXML" layoutX="46.0" layoutY="488.0" mnemonicParsing="false" onAction="#createXML" text="XML Erstellen" />
+                                    <ImageView fitHeight="131.0" fitWidth="110.0" layoutX="25.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
                                           <Image url="@Forma-Tool.png" />
-                                       </image></ImageView>
+                                       </image>
+                                    </ImageView>
+                                    <TextField fx:id="projNummer" layoutX="423.0" layoutY="159.0" />
                                  </children>
                               </AnchorPane>
                             <AnchorPane SplitPane.resizableWithParent="false">
                                  <children>
                                     <Label layoutX="54.0" layoutY="35.0" text="Export-Pfad" />
-                                    <TextField disable="true" editable="false" layoutX="163.0" layoutY="31.0" prefHeight="25.0" prefWidth="436.0" text="\\\fag-aba01\sfs_messerli\belegout" />
-                                    <TextField layoutX="163.0" layoutY="73.0" prefHeight="25.0" prefWidth="436.0" promptText="Passwort" />
+                                    <TextField disable="true" editable="false" layoutX="163.0" layoutY="31.0" prefHeight="26.0" prefWidth="410.0" text="\\\fag-aba01\sfs_messerli\belegout" />
+                                    <TextField layoutX="163.0" layoutY="73.0" prefHeight="26.0" prefWidth="410.0" promptText="Passwort" />
                                     <Button layoutX="42.0" layoutY="73.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="88.0" text="OK" />
                                  </children>
                               </AnchorPane>
@@ -128,17 +94,7 @@
                         </SplitPane>
                      </children>
                   </AnchorPane>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="667.0" prefWidth="370.0" SplitPane.resizableWithParent="false">
-                     <children>
-                        <Pane fx:id="pdfViewer" prefHeight="972.0" prefWidth="909.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                           <children>
-                              <Text fill="#9a9a9a" layoutX="126.0" layoutY="458.0" opacity="0.13" rotate="-24.1" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="2.0" text="PDF Viewer coming soon">
-                                 <font>
-                                    <Font size="64.0" />
-                                 </font>
-                              </Text>
-                           </children></Pane>
-                     </children></AnchorPane>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="969.0" prefWidth="516.0" SplitPane.resizableWithParent="false" />
               </items>
             </SplitPane>
       </children>
