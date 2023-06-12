@@ -5,6 +5,9 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
+import javafx.stage.Window;
 import javafx.util.converter.DateTimeStringConverter;
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
@@ -34,6 +37,7 @@ public class FormaController {
     @FXML private TextField bauadInfo = new TextField();
     @FXML private TextField betrag = new TextField();
     @FXML private TextField projNummer = new TextField();
+    @FXML private TextField pdfPath = new TextField();
     @FXML private ComboBox<String> belegArt = new ComboBox<>();
 
     //Variables to save the input
@@ -69,35 +73,21 @@ public class FormaController {
 
 
 
-    //@FXML
-    //private Button pdfButton;
-
-    //@FXML
-    // protected void onHelloButtonClick() {
-    //  pdfButton.setText("Welcome");
-    //}
-
-/*    @FXML
+    @FXML
+    private Button pdfButton;
+       @FXML
     protected void openPDF() {
-        chooser = new FileChooser();
-        chooser.setTitle("PDF Auswählen");
-        //Nur PDF wird angezeigt und kann ausgewählt werden, funktioniert nicht.
-       FileChooser.ExtensionFilter filter = new FileChooser.ExtensionFilter(
-                "PDF Files", ".pdf");
-        chooser.setSelectedExtensionFilter(filter);
-
-        // Dialog zum Oeffnen von Dateien anzeigen
-        File chosenPDF = chooser.showOpenDialog(fileWindow);
-
-
-
-          //  System.out.println("Die zu öffnende Datei ist: " +
-              //      chooser.getSelectedFile().getName());
-            pdfButton.setDisable(false);
+           FileChooser fileChooser = new FileChooser();
+           Stage stage = (Stage) mainBox.getScene().getWindow();
+           //nur PDF Dateien anzeigen
+           FileChooser.ExtensionFilter filter = new FileChooser.ExtensionFilter("pdf only", "*.pdf");
+           fileChooser.getExtensionFilters().add(filter);
+           File selectedFile = fileChooser.showOpenDialog(stage);
+           //TODO save Filepath and name to variable, change name and move file to new path
 
         }
 
- */
+
 
     @FXML
     protected void createXML() throws IOException {
@@ -124,10 +114,9 @@ public class FormaController {
             if (belegArtString.equals("G")) { //Betrag wird negativ wenn wir eine Gutschrift erhalten.
                 betragString = String.valueOf(Integer.parseInt(betragString) * (-1));
             }
-            //TODO Open the XML Template
-            // TODO change entries
-            //TODO safe as new file
-            //TODO make pop up that says done
+            String xmlFile = XMLCreator.xmlString(belegNummerString,belegDatumString, belegReferenzString,buchungsTextString,bauadInfoString, projNummerString,belegArtString);
+
+            //TODO write that string to an XML File and save it in the correct location with correct name
 
             System.out.println(belegNummerString);
             System.out.println(belegDatumString);
@@ -151,48 +140,6 @@ public class FormaController {
 //XML METHODS
 
     public static void readXML() {
-        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-        try {
-
-            // optional, but recommended
-            // process XML securely, avoid attacks like XML External Entities (XXE)
-            dbf.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);
-
-            // parse XML file
-            DocumentBuilder db = dbf.newDocumentBuilder();
-
-            Document doc = db.parse(new File(xmlPath));
-
-            doc.getDocumentElement().normalize();
-
-            System.out.println("Root Element :" + doc.getDocumentElement().getNodeName());
-            System.out.println("------");
-
-            // get <Document>
-            NodeList list = doc.getElementsByTagName("Document");
-            for (int temp = 0; temp < list.getLength(); temp++) {
-
-                Node node = list.item(temp);
-
-                if (node.getNodeType() == Node.ELEMENT_NODE) {
-
-                    Element element = (Element) node;
-
-                    // get relevant date
-                    String project = element.getAttribute("Project");
-                    String date = element.getElementsByTagName("AccountPayableDocumentDate").item(0).getTextContent();
-
-                    System.out.println("Current Element :" + node.getNodeName());
-                    System.out.println("Projekt : " + project);
-                    System.out.println("Datum : " + date);
-
-                }
-            }
-
-
-        } catch (ParserConfigurationException | IOException | SAXException e) {
-            throw new RuntimeException(e);
-        }
     }
 
 

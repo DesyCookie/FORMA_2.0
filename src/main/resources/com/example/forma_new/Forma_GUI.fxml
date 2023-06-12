@@ -59,27 +59,29 @@
                                        </effect>
                                     </Button>
                                     <TextField fx:id="belegNummer" disable="true" editable="false" layoutX="163.0" layoutY="157.0" />
-                                    <TextField fx:id="belegDatum" layoutX="163.0" layoutY="216.0" promptText="01.01.2022" />
+                                    <TextField fx:id="belegDatum" layoutX="163.0" layoutY="216.0" />
                                     <TextField fx:id="belegReferenz" layoutX="163.0" layoutY="271.0" />
-                                    <TextField fx:id="buchungsText" layoutX="163.0" layoutY="334.0" prefHeight="26.0" prefWidth="410.0" />
+                                    <TextField fx:id="buchungsText" layoutX="162.0" layoutY="358.0" prefHeight="26.0" prefWidth="410.0" />
                                     <TextField fx:id="bauadInfo" layoutX="422.0" layoutY="217.0" promptText="E/M" />
-                                    <TextField fx:id="betrag" layoutX="163.0" layoutY="402.0" />
+                                    <TextField fx:id="betrag" layoutX="163.0" layoutY="319.0" />
                                     <ComboBox fx:id="belegArt" layoutX="422.0" layoutY="272.0" prefWidth="150.0" promptText="F/G" visibleRowCount="2" />
                                     <Label layoutX="45.0" layoutY="160.0" text="Beleg-Nr." />
                                     <Label layoutX="46.0" layoutY="219.0" text="Beleg-Datum" />
                                     <Label layoutX="45.0" layoutY="274.0" text="Belegreferenz" />
-                                    <Label layoutX="46.0" layoutY="338.0" text="Buchungstext" />
-                                    <Label layoutX="45.0" layoutY="406.0" text="Betrag" />
+                                    <Label layoutX="45.0" layoutY="362.0" text="Buchungstext" />
+                                    <Label layoutX="45.0" layoutY="323.0" text="Betrag" />
                                     <Label layoutX="348.0" layoutY="163.0" text="Projekt-Nr." />
                                     <Label layoutX="348.0" layoutY="219.0" text="BAUAD-Info" />
                                     <Label layoutX="348.0" layoutY="277.0" text="Belegart" />
-                                    <Button fx:id="createXML" layoutX="46.0" layoutY="488.0" mnemonicParsing="false" onAction="#createXML" text="XML Erstellen" />
+                                    <Button fx:id="createXML" layoutX="46.0" layoutY="464.0" mnemonicParsing="false" onAction="#createXML" text="XML Erstellen" />
                                     <ImageView fitHeight="131.0" fitWidth="110.0" layoutX="25.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
                                           <Image url="@Forma-Tool.png" />
                                        </image>
                                     </ImageView>
                                     <TextField fx:id="projNummer" layoutX="423.0" layoutY="159.0" />
+                                    <Button fx:id="pdfButton" layoutX="45.0" layoutY="418.0" mnemonicParsing="false" onAction="#openPDF" text="PFD auswählen" />
+                                    <TextField fx:id="pdfPath" layoutX="162.0" layoutY="418.0" prefHeight="25.0" prefWidth="410.0" />
                                  </children>
                               </AnchorPane>
                             <AnchorPane SplitPane.resizableWithParent="false">
