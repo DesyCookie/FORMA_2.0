@@ -61,9 +61,10 @@
                                     <TextField fx:id="belegNummer" disable="true" editable="false" layoutX="163.0" layoutY="157.0" />
                                     <TextField fx:id="belegDatum" layoutX="163.0" layoutY="216.0" />
                                     <TextField fx:id="belegReferenz" layoutX="163.0" layoutY="271.0" />
-                                    <TextField fx:id="buchungsText" layoutX="162.0" layoutY="358.0" prefHeight="26.0" prefWidth="410.0" />
-                                    <TextField fx:id="bauadInfo" layoutX="422.0" layoutY="217.0" promptText="E/M" />
                                     <TextField fx:id="betrag" layoutX="163.0" layoutY="319.0" />
+                                    <TextField fx:id="buchungsText" layoutX="162.0" layoutY="358.0" prefHeight="26.0" prefWidth="410.0" />
+                                    <TextField fx:id="projNummer" layoutX="423.0" layoutY="159.0" />
+                                    <TextField fx:id="bauadInfo" layoutX="422.0" layoutY="217.0" promptText="E/M" />
                                     <ComboBox fx:id="belegArt" layoutX="422.0" layoutY="272.0" prefWidth="150.0" promptText="F/G" visibleRowCount="2" />
                                     <Label layoutX="45.0" layoutY="160.0" text="Beleg-Nr." />
                                     <Label layoutX="46.0" layoutY="219.0" text="Beleg-Datum" />
@@ -79,9 +80,8 @@
                                           <Image url="@Forma-Tool.png" />
                                        </image>
                                     </ImageView>
-                                    <TextField fx:id="projNummer" layoutX="423.0" layoutY="159.0" />
                                     <Button fx:id="pdfButton" layoutX="45.0" layoutY="418.0" mnemonicParsing="false" onAction="#openPDF" text="PFD auswählen" />
-                                    <TextField fx:id="pdfPath" layoutX="162.0" layoutY="418.0" prefHeight="25.0" prefWidth="410.0" />
+                                    <TextField fx:id="pdfPath" disable="true" editable="false" layoutX="162.0" layoutY="418.0" prefHeight="25.0" prefWidth="410.0" />
                                  </children>
                               </AnchorPane>
                             <AnchorPane SplitPane.resizableWithParent="false">
@@ -89,7 +89,7 @@
                                     <Label layoutX="54.0" layoutY="35.0" text="Export-Pfad" />
                                     <TextField disable="true" editable="false" layoutX="163.0" layoutY="31.0" prefHeight="26.0" prefWidth="410.0" text="\\\fag-aba01\sfs_messerli\belegout" />
                                     <TextField layoutX="163.0" layoutY="73.0" prefHeight="26.0" prefWidth="410.0" promptText="Passwort" />
-                                    <Button layoutX="42.0" layoutY="73.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="88.0" text="OK" />
+                                    <Button fx:id="exportButton" layoutX="42.0" layoutY="73.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="88.0" text="OK" />
                                  </children>
                               </AnchorPane>
                           </items>
