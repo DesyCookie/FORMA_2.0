@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
@@ -9,7 +8,6 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.effect.Blend?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -50,14 +48,6 @@
                           <items>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="827.0" SplitPane.resizableWithParent="false">
                                  <children>
-                                    <Button fx:id="pdfButton" layoutX="46.0" layoutY="95.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="88.0" style="-fx-background-color: #810f47;" text="PDF öffnen" textFill="WHITE" visible="false">
-                                       <cursor>
-                                          <Cursor fx:constant="HAND" />
-                                       </cursor>
-                                       <effect>
-                                          <Blend />
-                                       </effect>
-                                    </Button>
                                     <TextField fx:id="belegNummer" disable="true" editable="false" layoutX="163.0" layoutY="157.0" />
                                     <TextField fx:id="belegDatum" layoutX="163.0" layoutY="216.0" />
                                     <TextField fx:id="belegReferenz" layoutX="163.0" layoutY="271.0" />
@@ -87,7 +77,7 @@
                             <AnchorPane SplitPane.resizableWithParent="false">
                                  <children>
                                     <Label layoutX="54.0" layoutY="35.0" text="Export-Pfad" />
-                                    <TextField disable="true" editable="false" layoutX="163.0" layoutY="31.0" prefHeight="26.0" prefWidth="410.0" text="\\\fag-aba01\sfs_messerli\belegout" />
+                                    <TextField fx:id="exportPathField" disable="true" editable="false" layoutX="163.0" layoutY="31.0" prefHeight="26.0" prefWidth="410.0" />
                                     <TextField layoutX="163.0" layoutY="73.0" prefHeight="26.0" prefWidth="410.0" promptText="Passwort" />
                                     <Button fx:id="exportButton" layoutX="42.0" layoutY="73.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="88.0" text="OK" />
                                  </children>

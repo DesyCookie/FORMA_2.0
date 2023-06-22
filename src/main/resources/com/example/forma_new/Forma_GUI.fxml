@@ -77,7 +77,7 @@
                             <AnchorPane SplitPane.resizableWithParent="false">
                                  <children>
                                     <Label layoutX="54.0" layoutY="35.0" text="Export-Pfad" />
-                                    <TextField disable="true" editable="false" layoutX="163.0" layoutY="31.0" prefHeight="26.0" prefWidth="410.0" text="\\\fag-aba01\sfs_messerli\belegout" />
+                                    <TextField fx:id="exportPathField" disable="true" editable="false" layoutX="163.0" layoutY="31.0" prefHeight="26.0" prefWidth="410.0" />
                                     <TextField layoutX="163.0" layoutY="73.0" prefHeight="26.0" prefWidth="410.0" promptText="Passwort" />
                                     <Button fx:id="exportButton" layoutX="42.0" layoutY="73.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="88.0" text="OK" />
                                  </children>

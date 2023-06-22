@@ -5,8 +5,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class XMLCreator {
-    //TODO Referenz und Bauad Info an richtigen Ort
-    public static String xmlString(String belegNummer, String belegDatum, String referenz, String buchungsText, String bauadInfo, String projNr, String belegArt, String betrag){
+    public static String xmlString(String belegNummer, String belegDatum, String referenz, String buchungsText, String bauadInfo, String projNr, String belegArt, String betrag, String pdfName){
        return "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"no\"?><AbaConnectContainer>\n" +
                 "  <TaskCount>1</TaskCount>\n" +
                 "  <Task>\n" +
@@ -16,19 +15,19 @@ public class XMLCreator {
                 "        <CustomDocumentDeadLine>30</CustomDocumentDeadLine>\n" +
                 "        <DocumentBlockedForDisposition>false</DocumentBlockedForDisposition>\n" +
                 "        <DocumentCode>"+belegArt+"</DocumentCode>\n" +
-                "        <DocumentPicture>institute_0006_v2017 (2) (1) (1) (1).pdf</DocumentPicture>\n" +
+                "        <DocumentPicture>"+pdfName+"</DocumentPicture>\n" +
                 "        <DocumentStatusForDisposition>0</DocumentStatusForDisposition>\n" +
                 "        <KeyAmount>"+betrag+"</KeyAmount>\n" +
                 "        <LineItem mode=\"SAVE\">\n" +
                 "          <Project>"+projNr+"</Project>\n" +
                 "          <TaxCode>111</TaxCode>\n" +
                 "          <Text>"+buchungsText+"</Text>\n" +
-                "          <_USERFIELD1>Hilfstext</_USERFIELD1>\n" +
+                "          <_USERFIELD1>"+bauadInfo+"</_USERFIELD1>\n" +
                 "        </LineItem>\n" +
                 "        <Note/>\n" +
                 "        <Number>"+belegNummer+"</Number>\n" +
                 "        <PaymentTermNumber>1</PaymentTermNumber>\n" +
-                "        <ReferenceNumber>0</ReferenceNumber>\n" +
+                "        <ReferenceNumber>"+referenz+"</ReferenceNumber>\n" +
                 "        <StatusIdentification>PROV1</StatusIdentification>\n" +
                 "      </Document>\n" +
                 "    </Transaction>\n" +
@@ -47,7 +46,7 @@ public class XMLCreator {
     public static void makeFile(String xmlString, String filename, String outputPath){
         filename = outputPath + "\\" + filename;
         try {
-            File myObj = new File(filename); //TODO add path and specify Filename
+            File myObj = new File(filename);
             if (myObj.createNewFile()) {
                 System.out.println("File created: " + myObj.getName());
             } else {
