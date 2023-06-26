@@ -30,7 +30,7 @@ public class FormaController {
     @FXML private TextField buchungsText = new TextField();
     @FXML private TextField projNummer = new TextField();
     @FXML private TextField bauadInfo = new TextField();
-    @FXML private TextField pdfPath = new TextField();
+    @FXML private TextField pdfPathField = new TextField();
     @FXML private TextField exportPathField = new TextField();
     @FXML private ComboBox<String> belegArt = new ComboBox<>();
     @FXML private Button exportButton = new Button();
@@ -103,8 +103,8 @@ public class FormaController {
            fileChooser.getExtensionFilters().add(filter);
            File selectedFile = fileChooser.showOpenDialog(stage);
            if(selectedFile == null){return;}
-           pdfPath.setText(selectedFile.getPath());
-           pdfSource = pdfPath.getText();
+           pdfPathField.setText(selectedFile.getPath());
+           pdfSource = pdfPathField.getText();
            pdfSourcePath = selectedFile.getPath();
            pdfName = selectedFile.getName();
            //PDF will be Copied when XML Button is pressed
@@ -115,7 +115,7 @@ public class FormaController {
     @FXML
     protected void createXML() throws IOException {
         readFields();
-        copyPDF(pdfSourcePath, renamePDF(pdfSourcePath, belegNummerString) );
+        copyPDF(pdfSourcePath, renamePDF(pdfSourcePath, belegNummerString) );//TODO Destination Path
         xmlName = "FORMA_"+belegNummerString+".xml"; //Name für XML mit Belegnummer
         String xmlFile = XMLCreator.xmlString(belegNummerString,belegDatumString, belegReferenzString,buchungsTextString,bauadInfoString, projNummerString,belegArtString,betragString,pdfNewName);
         XMLCreator.makeFile(xmlFile, xmlName, destination);
@@ -128,14 +128,14 @@ public class FormaController {
         alert.setTitle("XML Erstellt");
         alert.setHeaderText("Das XML wurde erfolgreich erstellt!");
         alert.showAndWait();
-        belegDatum.setText("01.01.2023");
+       /* belegDatum.setText("01.01.2023");
         belegReferenz.setText("");
         betrag.setText("");
         buchungsText.setText("");
         projNummer.setText("");
         bauadInfo.setText("");
         pdfPath.setText("");
-
+*/
         }
 
 
@@ -257,12 +257,12 @@ public class FormaController {
     public String renamePDF (String pdfSourcePath, String belegNummerString){ //new Name for PDF "name.pdf" -> "name_BELEGNUMMER.pdf"
 
         pdfNewName=  pdfSourcePath.replace(".pdf", "_"+belegNummerString+".pdf");
-        return pdfName;
+        return pdfNewName;
     }
 
-    public void copyPDF(String origin, String destination) throws IOException {
+    public void copyPDF(String origin, String destinationName) throws IOException {
         Path originPath = Path.of(origin);
-        Path destinationPath = Path.of(destination);
+        Path destinationPath = Path.of(destinationName);
         Files.copy(originPath, destinationPath, StandardCopyOption.REPLACE_EXISTING);
     }
 }
