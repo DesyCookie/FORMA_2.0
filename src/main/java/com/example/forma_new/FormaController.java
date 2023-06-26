@@ -33,8 +33,8 @@ public class FormaController {
     @FXML private TextField pdfPathField = new TextField();
     @FXML private TextField exportPathField = new TextField();
     @FXML private ComboBox<String> belegArt = new ComboBox<>();
-    @FXML private Button exportButton = new Button();
-    @FXML private Button pdfButton = new Button();
+    //@FXML private Button exportButton = new Button();
+    //@FXML private Button pdfButton = new Button();
 
     //Variables to save the input
     private String belegNummerString;
@@ -45,10 +45,8 @@ public class FormaController {
     private String betragString;
     private String projNummerString;
     private String belegArtString;
-    private String pdfName;
 
     private String pdfNewName;
-    private String pdfSource; //Ursprungsort PDF Datei
     private String pdfSourcePath;
 
     private String destination; //destination path for PDF copy and generated XML
@@ -104,9 +102,10 @@ public class FormaController {
            File selectedFile = fileChooser.showOpenDialog(stage);
            if(selectedFile == null){return;}
            pdfPathField.setText(selectedFile.getPath());
-           pdfSource = pdfPathField.getText();
+           //Ursprungsort PDF Datei
+           String pdfSource = pdfPathField.getText();
            pdfSourcePath = selectedFile.getPath();
-           pdfName = selectedFile.getName();
+           String pdfName = selectedFile.getName();
            //PDF will be Copied when XML Button is pressed
         }
 
@@ -115,7 +114,7 @@ public class FormaController {
     @FXML
     protected void createXML() throws IOException {
         readFields();
-        copyPDF(pdfSourcePath, renamePDF(pdfSourcePath, belegNummerString) );//TODO Destination Path
+        copyPDF(pdfSourcePath, renamePDF(pdfSourcePath, belegNummerString), destination);
         xmlName = "FORMA_"+belegNummerString+".xml"; //Name für XML mit Belegnummer
         String xmlFile = XMLCreator.xmlString(belegNummerString,belegDatumString, belegReferenzString,buchungsTextString,bauadInfoString, projNummerString,belegArtString,betragString,pdfNewName);
         XMLCreator.makeFile(xmlFile, xmlName, destination);
@@ -257,12 +256,13 @@ public class FormaController {
     public String renamePDF (String pdfSourcePath, String belegNummerString){ //new Name for PDF "name.pdf" -> "name_BELEGNUMMER.pdf"
 
         pdfNewName=  pdfSourcePath.replace(".pdf", "_"+belegNummerString+".pdf");
+        pdfNewName = String.valueOf(Path.of(pdfNewName).getFileName());
         return pdfNewName;
     }
 
-    public void copyPDF(String origin, String destinationName) throws IOException {
+    public void copyPDF(String origin, String pdfName, String outPath) throws IOException {
         Path originPath = Path.of(origin);
-        Path destinationPath = Path.of(destinationName);
+        Path destinationPath = Path.of(outPath + "\\" + pdfName);
         Files.copy(originPath, destinationPath, StandardCopyOption.REPLACE_EXISTING);
     }
 }
