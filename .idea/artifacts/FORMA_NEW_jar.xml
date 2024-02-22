@@ -24,6 +24,8 @@
       <element id="library" level="project" name="Maven: org.openjfx:javafx-controls:17-ea+11" />
       <element id="library" level="project" name="Maven: org.kordamp.ikonli:ikonli-core:12.2.0" />
       <element id="library" level="project" name="Maven: eu.hansolo:tilesfx:11.48" />
+      <element id="library" level="project" name="openjfx.javafx.base" />
+      <element id="library" level="project" name="openjfx.javafx.fxml" />
     </root>
   </artifact>
 </component>
